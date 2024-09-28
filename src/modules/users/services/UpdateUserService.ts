@@ -4,9 +4,6 @@ import UsersRepository from "../typeorm/repositories/UsersRepository";
 import AppError from "@shared/errors/AppError";
 import { hash } from "bcryptjs";
 
-
-
-
 interface IRequest{
     id: number,
     name: string,
