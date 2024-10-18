@@ -4,7 +4,7 @@ import { ICustomersRepository } from '../domain/repositories/ICustomersReporitor
 import { inject, injectable } from 'tsyringe';
 
 interface IRequest{
-    customer_id: string;
+    customer_id: number;
     name: string;
     email: string
 }
@@ -18,8 +18,8 @@ class UpdateCustomerService{
         ){}
 
         public async execute({ customer_id,name, email}: IRequest): Promise<ICustomer>{
-               const id = parseInt(customer_id);
-
+            //    const id = parseInt(customer_id);
+               const id = customer_id;
                const customer = await this.customersRepository.findById(id);
 
                if(!customer){
@@ -28,7 +28,8 @@ class UpdateCustomerService{
 
                const emailExist = await this.customersRepository.findByEmail(email);
 
-               if(emailExist && email !== customer.email){ // e esse email que foi passado é diferente do customer significa que ja tem um user com esse email
+               //isso em caso se ele passar o mesmo email se esse email que foi passado é diferente do customer significa que ja tem um user com esse email
+               if(emailExist && email !== customer.email){ 
                   throw new AppError('there is allready onde customer with this email')
                }
 

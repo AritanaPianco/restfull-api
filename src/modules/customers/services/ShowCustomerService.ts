@@ -5,7 +5,7 @@ import { inject, injectable } from 'tsyringe';
 
 
 interface IRequest{
-     customer_id: string
+     customer_id: number
 }
 
 @injectable()
@@ -17,7 +17,8 @@ class ShowCustomerService{
       ){}
 
      public async execute({customer_id}: IRequest): Promise<ICustomer>{
-           const id = parseInt(customer_id);
+      //    const id = parseInt(customer_id);
+           const id = customer_id;
            const customer = await this.customersRepository.findById(id);
 
            if(!customer){
