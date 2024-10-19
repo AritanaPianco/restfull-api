@@ -15,8 +15,6 @@ class UpdateUserService{
       ){}
 
      public async execute({id, name, email, password}: IUpdateUser): Promise<IUser>{
-        //    const usersRepository = getCustomRepository(UsersRepository)
-
            const user = await this.usersRepository.findById(id);
 
            if(!user){
@@ -25,7 +23,8 @@ class UpdateUserService{
 
            const emailExist = await this.usersRepository.findByEmail(email)
 
-           if(emailExist &&  email !== user.email){ //se o email for o meu ele não vai deixar atualizar se eu quiser manter o email e atualizar o resto dos atributos
+           //se o email for o meu ele não vai deixar atualizar se eu quiser manter o email e atualizar o resto dos atributos
+           if(emailExist &&  email !== user.email){ 
                throw new AppError('there is already one user with this email')
            }
 
