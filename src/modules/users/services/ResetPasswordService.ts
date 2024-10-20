@@ -1,11 +1,10 @@
-import { getCustomRepository } from "typeorm"
 import AppError from "@shared/errors/AppError";
-import UserTokensRepository from "../infra/typeorm/repositories/UserTokensRepository";
 import {isAfter, addHours} from 'date-fns'
 import {hash} from 'bcryptjs'
 import { IUserRepository } from "../domain/repositories/IUsersRepository";
 import { inject, injectable } from "tsyringe";
 import { IUser } from "../domain/models/IUser";
+import { IUsersTokenRepositorie } from "../domain/repositories/IUserTokenRepository";
 
 interface IRequest{
     token: string,
@@ -17,13 +16,14 @@ class ResetPasswordService{
 
     constructor(
         @inject('UsersRepository')
-        private usersRepository: IUserRepository
+        private usersRepository: IUserRepository,
+        @inject('UserTokensRepository')
+        private userTokensRepository: IUsersTokenRepositorie
       ){}
 
     public async execute({ token, password }: IRequest): Promise<IUser>{
-        const userTokensRepository = getCustomRepository(UserTokensRepository)
 
-        const userToken = await userTokensRepository.findByToken(token);
+        const userToken = await this.userTokensRepository.findByToken(token);
 
             if(!userToken){
                 throw new AppError('User Token does not exist')
@@ -33,7 +33,7 @@ class ResetPasswordService{
 
          if(!user){
             throw new AppError('User does not exist')
-        }
+         }
 
         const tokenCreatedAt = userToken.created_at;
         const compareDate = addHours(tokenCreatedAt,2)

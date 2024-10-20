@@ -1,10 +1,9 @@
-import { getCustomRepository } from "typeorm"
 import AppError from "@shared/errors/AppError";
-import UserTokensRepository from "../infra/typeorm/repositories/UserTokensRepository";
 import EtherealMail from "@config/mail/EtherealMail";
 import path from "path";
 import { IUserRepository } from "../domain/repositories/IUsersRepository";
 import { inject, injectable } from "tsyringe";
+import { IUsersTokenRepositorie } from "../domain/repositories/IUserTokenRepository";
 
 interface IRequest{
     email: string,
@@ -15,10 +14,11 @@ class SendForgotPasswordEmailService{
     constructor(
         @inject('UsersRepository')
         private usersRepository: IUserRepository,
+        @inject('UserTokensRepository')
+        private userTokensRepository: IUsersTokenRepositorie
       ){}
 
        public async execute({ email }: IRequest): Promise<void>{
-            const userTokensRepository = getCustomRepository(UserTokensRepository)
             const user = await this.usersRepository.findByEmail(email); // regra de negocio procurar se existe esse email em users
 
              if(!user){
@@ -26,7 +26,7 @@ class SendForgotPasswordEmailService{
              }
 
              //  console.log(user)
-             const token = await userTokensRepository.generate(user.id);
+             const token = await this.userTokensRepository.generate(user.id);
 
              const forgotPasswordTemplate = path.resolve(__dirname, '..','views', 'forgot_password.hbs')
              //  console.log(token)

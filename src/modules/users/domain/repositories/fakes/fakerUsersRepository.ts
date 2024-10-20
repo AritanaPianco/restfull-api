@@ -4,8 +4,6 @@ import { IUserRepository } from '@modules/users/domain/repositories/IUsersReposi
 import { IUser } from '@modules/users/domain/models/IUser';
 import { ICreateUser } from '@modules/users/domain/models/ICreateUser';
 
-
-
 class FakerUsersRepository implements IUserRepository{
 
     private users: User[] = [];

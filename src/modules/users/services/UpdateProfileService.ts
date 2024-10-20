@@ -1,9 +1,8 @@
 import AppError from '../../../shared/errors/AppError'
-import {compare, hash} from 'bcryptjs';
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../domain/repositories/IUsersRepository";
 import { IUser } from "../domain/models/IUser";
-// import { hash } from "crypto";
+import { IHashProvider } from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequest{
     user_id: number;
@@ -18,7 +17,9 @@ class UpdateProfileService{
 
     constructor(
         @inject('UsersRepository')
-        private usersRepository: IUserRepository
+        private usersRepository: IUserRepository,
+        @inject('HashProvider')
+        private hashProvider: IHashProvider
       ){}
 
 
@@ -39,13 +40,13 @@ class UpdateProfileService{
         }
 
         if(password && old_password){
-            const checkOldPassword = await compare(old_password, user.password);
+            const checkOldPassword = await  this.hashProvider.compareHash(old_password, user.password);
 
             if(!checkOldPassword){
                 throw new AppError('Old password does not match')
             }
 
-            user.password = await hash(password, 8);
+            user.password = await this.hashProvider.generateHash(password, 8);
         }
 
         user.name = name;

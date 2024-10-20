@@ -1,5 +1,5 @@
 import AppError from "@shared/errors/AppError";
-import { sign } from "jsonwebtoken";
+import { Secret, sign } from "jsonwebtoken";
 import authConfig from '@config/auth'
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../domain/repositories/IUsersRepository";
@@ -43,16 +43,15 @@ class CreateSessionService{
                throw new AppError('Incorrect email/password combination', 401)
            }
 
-          //  const idUser = user.id.toString()
 
-           const token = sign({}, authConfig.jwt.secret, {
-                subject: user.id?.toString() || undefined,
+           const token = sign({}, authConfig.jwt.secret as Secret, {
+                subject: user.id?.toString(),
                 expiresIn: authConfig.jwt.expiresIn
            }) // criação do token chave de acesso para acessar as rotas -> autorização
 
            return {
               user,
-              token: token
+              token
            };
 
        }

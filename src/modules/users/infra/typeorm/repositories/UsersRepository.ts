@@ -1,4 +1,4 @@
-import {EntityRepository, Repository, getRepository} from 'typeorm'
+import {Repository, getRepository} from 'typeorm'
 import User from '../entities/User'
 import { IUserRepository } from '@modules/users/domain/repositories/IUsersRepository';
 import { IUser } from '@modules/users/domain/models/IUser';

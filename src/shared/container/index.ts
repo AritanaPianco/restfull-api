@@ -8,6 +8,8 @@ import { IProductsRepository } from "@modules/products/domain/repositories/IProd
 import { ProductRepository } from "@modules/products/infra/typeorm/repositories/ProductsRepository";
 import { IUserRepository } from "@modules/users/domain/repositories/IUsersRepository";
 import UsersRepository from "@modules/users/infra/typeorm/repositories/UsersRepository";
+import UserTokensRepository from "@modules/users/infra/typeorm/repositories/UserTokensRepository";
+import { IUsersTokenRepositorie } from "@modules/users/domain/repositories/IUserTokenRepository";
 
 import '@modules/users/providers';
 
@@ -15,3 +17,4 @@ container.registerSingleton<ICustomersRepository>('CustomersRepository', Custome
 container.registerSingleton<IOrdersRepository>('OrdersRepository', OrdersRepository);
 container.registerSingleton<IProductsRepository>('ProductRepository', ProductRepository);
 container.registerSingleton<IUserRepository>('UsersRepository', UsersRepository);
+container.registerSingleton<IUsersTokenRepositorie>('UserTokensRepository', UserTokensRepository)

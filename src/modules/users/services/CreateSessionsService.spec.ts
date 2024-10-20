@@ -1,6 +1,5 @@
 import "reflect-metadata";
 import FakerBcryptHashProvider from "../providers/HashProvider/fakes/FakerBcryptHashProvider";
-import CreateUserService from "./CreateUserService";
 import FakerUsersRepository from "../domain/repositories/fakes/fakerUsersRepository";
 import AppError from "@shared/errors/AppError";
 import CreateSessionService from "./CreateSessionsService";
