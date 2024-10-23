@@ -3,6 +3,10 @@ import FakerUsersRepository from "../domain/repositories/fakes/fakerUsersReposit
 import SendForgotPasswordEmailService from "./SendForgotPasswordEmailService";
 import AppError from "@shared/errors/AppError";
 import FakerUserTokensRepository from "../domain/repositories/fakes/fakerUserTokensRepository";
+import EtherealMail from "@config/mail/EtherealMail";
+
+jest.mock("@config/mail/EtherealMail")
+
 
 let fakerUsersRepository: FakerUsersRepository;
 let sendForgotPasswordEmail: SendForgotPasswordEmailService;
@@ -26,20 +30,21 @@ describe('SendForgotPasswordEmail', () => {
           
     })
 
-    it('should not be able to send a email of forgot password', async () => {
+    it('should be able to send a email of forgot password', async () => {
+         const sendEmail = jest.spyOn(EtherealMail,'sendMail')
+
+
           const user = await fakerUsersRepository.create({
                name: 'maria',
                email: 'maria@gmail.com',
                password: '234'
           })   
-         
-          const token = await fakerUsersTokenRepository.generate(user.id)
+ 
+          await sendForgotPasswordEmail.execute({
+               email: 'maria@gmail.com'
+          })
+          expect(sendEmail).toHaveBeenCalled()
 
-          const userToken = await fakerUsersTokenRepository.findByToken(token.token)
-
-          expect(userToken?.token).toEqual(token.token)
-         
     })
-
   
 })

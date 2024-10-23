@@ -1,7 +1,4 @@
-import { getCustomRepository } from "typeorm"
-import { ProductRepository } from "../infra/typeorm/repositories/ProductsRepository"
 import AppError from "@shared/errors/AppError";
-import Product from "../infra/typeorm/entities/Product";
 import RedisCache from "@shared/cache/RedisCache";
 import { IProduct } from "../domain/models/IProcuct";
 import { ICreateProduct } from "../domain/models/ICreateProduct";

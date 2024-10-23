@@ -4,8 +4,10 @@ import ShowProfileService from "./ShowProfileService";
 import UpdateUserAvatarService from "./UpdateUserAvatarService";
 import AppError from "@shared/errors/AppError";
 
+
 let fakerUsersRepository: FakerUsersRepository;
 let updateUserAvatar: UpdateUserAvatarService;
+
 
 describe('UpdateUserAvatar', () => {
 
@@ -40,5 +42,7 @@ describe('UpdateUserAvatar', () => {
           expect(userWithAvatarUpdated.id).toEqual(user.id)
          
     })
- 
+
+   
+
 })

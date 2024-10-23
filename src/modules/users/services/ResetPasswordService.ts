@@ -5,6 +5,7 @@ import { IUserRepository } from "../domain/repositories/IUsersRepository";
 import { inject, injectable } from "tsyringe";
 import { IUser } from "../domain/models/IUser";
 import { IUsersTokenRepositorie } from "../domain/repositories/IUserTokenRepository";
+import { IHashProvider } from "../providers/HashProvider/models/IHashProvider";
 
 interface IRequest{
     token: string,
@@ -18,7 +19,9 @@ class ResetPasswordService{
         @inject('UsersRepository')
         private usersRepository: IUserRepository,
         @inject('UserTokensRepository')
-        private userTokensRepository: IUsersTokenRepositorie
+        private userTokensRepository: IUsersTokenRepositorie,
+        @inject('HashProvider')
+        private hashProvider: IHashProvider
       ){}
 
     public async execute({ token, password }: IRequest): Promise<IUser>{
@@ -37,12 +40,13 @@ class ResetPasswordService{
 
         const tokenCreatedAt = userToken.created_at;
         const compareDate = addHours(tokenCreatedAt,2)
+        const isAfterTheHourPermited = isAfter(Date.now(),compareDate)
 
-        if(isAfter(Date.now(),compareDate)){
+        if(isAfterTheHourPermited){
             throw new AppError('Token expired.')
         }
 
-         user.password = await hash(password, 8);
+         user.password = await this.hashProvider.generateHash(password, 8);
          await this.usersRepository.save(user);
          return user;
 
