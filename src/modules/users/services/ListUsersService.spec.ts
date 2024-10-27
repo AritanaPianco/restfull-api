@@ -13,21 +13,24 @@ describe('ListUsers', () => {
     })
 
     it('should be able to return all users', async () => {
-        await fakerUsersRepository.create({
+        const user1 = await fakerUsersRepository.create({
              name: 'maria',
              email: 'maria@gmail.com',
              password: '345'
         }) 
 
-        await fakerUsersRepository.create({
+        const user2 = await fakerUsersRepository.create({
             name: 'joao',
             email: 'joao@gmail.com',
             password: '567'
         })
 
+        const findAll = jest.spyOn(fakerUsersRepository, 'findAllUsers') 
+        await listUsers.execute() 
+
         expect(
-           listUsers.execute()
-        ).resolves.toBeInstanceOf(Array)
+            findAll
+        ).toHaveBeenCalled()
           
     })
   

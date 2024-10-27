@@ -1,7 +1,7 @@
 import AppError from "@shared/errors/AppError";
-import { IProduct } from "../domain/models/IProcuct";
+import type { IProduct } from "../domain/models/IProcuct";
 import { inject, injectable } from "tsyringe";
-import { IProductsRepository } from "../domain/repositories/IProductsRepository";
+import type { IProductsRepository } from "../domain/repositories/IProductsRepository";
 
 interface IRequest{
     id: number

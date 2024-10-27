@@ -1,8 +1,8 @@
 import AppError from "@shared/errors/AppError";
 import RedisCache from "@shared/cache/RedisCache";
-import { IProduct } from "../domain/models/IProcuct";
-import { ICreateProduct } from "../domain/models/ICreateProduct";
-import { IProductsRepository } from "../domain/repositories/IProductsRepository";
+import type { IProduct } from "../domain/models/IProcuct";
+import type { ICreateProduct } from "../domain/models/ICreateProduct";
+import type { IProductsRepository } from "../domain/repositories/IProductsRepository";
 import { inject, injectable } from "tsyringe";
 
 

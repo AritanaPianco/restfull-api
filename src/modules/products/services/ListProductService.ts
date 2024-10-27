@@ -18,8 +18,7 @@ class ListProductService{
         const products = await this.productsRepository.findAllProducts()
 
         await redisCache.save('api-vendas-PRODUCT_LIST', products)
-        console.log(products)
-
+      
         return products;
 
    }
