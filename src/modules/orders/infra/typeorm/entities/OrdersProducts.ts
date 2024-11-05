@@ -8,8 +8,8 @@ import {
      Column} from 'typeorm'
 import Order from './Order'
 import Product from '@modules/products/infra/typeorm/entities/Product'
-import { IOrdersProducts } from '@modules/orders/domain/models/IOrdersProducts'
-import { IProduct } from '@modules/products/domain/models/IProcuct'
+import type { IOrdersProducts } from '@modules/orders/domain/models/IOrdersProducts'
+import type { IProduct } from '@modules/products/domain/models/IProcuct'
 
 @Entity('orders_products')
 class OrdersProducts implements IOrdersProducts{

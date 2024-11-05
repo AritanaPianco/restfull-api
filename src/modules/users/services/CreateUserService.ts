@@ -1,9 +1,9 @@
 import AppError from "@shared/errors/AppError";
-import { ICreateUser } from "../domain/models/ICreateUser";
-import { IUserRepository } from "../domain/repositories/IUsersRepository";
-import { inject, injectable } from "tsyringe";
-import { IUser } from "../domain/models/IUser";
-import { IHashProvider } from "../providers/HashProvider/models/IHashProvider";
+import type { ICreateUser } from "../domain/models/ICreateUser";
+import type{ IUserRepository } from "../domain/repositories/IUsersRepository";
+import{ inject, injectable } from "tsyringe";
+import type{ IUser } from "../domain/models/IUser";
+import type{ IHashProvider } from "../providers/HashProvider/models/IHashProvider";
 
 
 @injectable()

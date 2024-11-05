@@ -1,8 +1,8 @@
 import Product from '@modules/products/infra/typeorm/entities/Product';
-import { IProductsRepository } from '@modules/products/domain/repositories/IProductsRepository';
-import { ICreateProduct } from '@modules/products/domain/models/ICreateProduct';
-import { IProduct } from '@modules/products/domain/models/IProcuct';
-import { IUpdatedProduct } from '@modules/products/domain/models/IUpdatedProduct';
+import type { IProductsRepository } from '@modules/products/domain/repositories/IProductsRepository';
+import type { ICreateProduct } from '@modules/products/domain/models/ICreateProduct';
+import type { IProduct } from '@modules/products/domain/models/IProcuct';
+import type { IUpdatedProduct } from '@modules/products/domain/models/IUpdatedProduct';
 
 interface IFindProducts{
     id: number;
@@ -11,7 +11,7 @@ interface IFindProducts{
 export class FakerProductRepository implements IProductsRepository{
 
     private products: Product[] = [];  
-    private counter: number = 1
+    private counter = 1
   
     public async create({ name, price, quantity}: ICreateProduct): Promise<IProduct>{
            const product = new Product();
@@ -38,7 +38,7 @@ export class FakerProductRepository implements IProductsRepository{
     }
 
     public async save(product: IProduct): Promise<IProduct>{
-      const findIndex = this.products.findIndex(findProduct => product.id === product.id);
+      const findIndex = this.products.findIndex(findProduct => findProduct.id === product.id);
       this.products[findIndex] = product;
 
       return product;
@@ -60,14 +60,15 @@ export class FakerProductRepository implements IProductsRepository{
 
     public async findAllByIds(products: IFindProducts[]): Promise<IProduct[] | undefined>{
             const productIds = products.map((product) => product.id);
-            let existsProducts: IProduct[] = []        
+            const existsProducts: IProduct[] = []        
  
-            this.products.forEach((product) => {
-                    productIds.forEach((id) => {
-                          if(id === product.id){
-                              existsProducts.push(product)                
-                          }
-                    })
+            this.products.forEach((product, i) => {
+                  for(const id of productIds){
+                    if(id === product.id){
+                        existsProducts.push(product)                
+
+                    }
+                  }
             })
           
          return existsProducts;

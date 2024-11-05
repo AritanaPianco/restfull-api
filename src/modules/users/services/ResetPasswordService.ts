@@ -1,11 +1,11 @@
 import AppError from "@shared/errors/AppError";
 import {isAfter, addHours} from 'date-fns'
 import {hash} from 'bcryptjs'
-import { IUserRepository } from "../domain/repositories/IUsersRepository";
+import type { IUserRepository } from "../domain/repositories/IUsersRepository";
 import { inject, injectable } from "tsyringe";
-import { IUser } from "../domain/models/IUser";
-import { IUsersTokenRepositorie } from "../domain/repositories/IUserTokenRepository";
-import { IHashProvider } from "../providers/HashProvider/models/IHashProvider";
+import type { IUser } from "../domain/models/IUser";
+import type { IUsersTokenRepositorie } from "../domain/repositories/IUserTokenRepository";
+import type { IHashProvider } from "../providers/HashProvider/models/IHashProvider";
 
 interface IRequest{
     token: string,

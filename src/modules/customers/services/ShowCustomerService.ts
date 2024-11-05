@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
-import { ICustomersRepository } from '../domain/repositories/ICustomersReporitory';
-import { ICustomer } from '../domain/models/ICustomer';
+import type { ICustomersRepository } from '../domain/repositories/ICustomersReporitory';
+import type { ICustomer } from '../domain/models/ICustomer';
 import { inject, injectable } from 'tsyringe';
 
 

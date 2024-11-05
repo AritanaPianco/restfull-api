@@ -1,10 +1,8 @@
-import { getCustomRepository } from "typeorm"
+import "reflect-metadata";
 import AppError from "@shared/errors/AppError";
-import { OrdersRepository } from "../infra/typeorm/repositories/OrdersRepository";
-import Order from "../infra/typeorm/entities/Order";
-import { IOrdersRepository } from "../domain/repositories/IOrdersRepository";
+import type { IOrdersRepository } from "../domain/repositories/IOrdersRepository";
 import { inject, injectable } from "tsyringe";
-import { IOrder } from "../domain/models/IOrder";
+import type { IOrder } from "../domain/models/IOrder";
 
 interface IRequest{
     id: number;

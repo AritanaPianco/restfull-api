@@ -3,8 +3,8 @@ import path from "path";
 import uploadConfig from '@config/upload'
 import fs from 'fs'
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../domain/repositories/IUsersRepository";
-import { IUser } from "../domain/models/IUser";
+import type { IUserRepository } from "../domain/repositories/IUsersRepository";
+import type { IUser } from "../domain/models/IUser";
 
 interface IRequest{
     user_id: number,

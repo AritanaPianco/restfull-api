@@ -1,7 +1,7 @@
-import { Repository, getRepository } from 'typeorm'
+import { type Repository, getRepository } from 'typeorm'
 import Order from '../entities/Order';
-import { ICreateOrder } from '@modules/orders/domain/models/ICreateOrder';
-import { IOrdersRepository } from '@modules/orders/domain/repositories/IOrdersRepository';
+import type { ICreateOrder } from '@modules/orders/domain/models/ICreateOrder';
+import type { IOrdersRepository } from '@modules/orders/domain/repositories/IOrdersRepository';
 
 
 export class OrdersRepository implements IOrdersRepository{

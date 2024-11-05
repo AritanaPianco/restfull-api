@@ -1,5 +1,5 @@
-import { ICustomersRepository } from '../domain/repositories/ICustomersReporitory';
-import { IPaginateCustomer } from '../domain/models/IPaginateCustomer';
+import type { ICustomersRepository } from '../domain/repositories/ICustomersReporitory';
+import type { IPaginateCustomer } from '../domain/models/IPaginateCustomer';
 import { inject, injectable } from 'tsyringe';
 
 

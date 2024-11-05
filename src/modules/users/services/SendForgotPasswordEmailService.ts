@@ -1,9 +1,9 @@
 import AppError from "@shared/errors/AppError";
 import EtherealMail from "@config/mail/EtherealMail";
 import path from "path";
-import { IUserRepository } from "../domain/repositories/IUsersRepository";
+import type { IUserRepository } from "../domain/repositories/IUsersRepository";
 import { inject, injectable } from "tsyringe";
-import { IUsersTokenRepositorie } from "../domain/repositories/IUserTokenRepository";
+import type { IUsersTokenRepositorie } from "../domain/repositories/IUserTokenRepository";
 
 interface IRequest{
     email: string,

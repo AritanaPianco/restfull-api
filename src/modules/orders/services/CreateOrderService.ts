@@ -1,10 +1,10 @@
 import AppError from "@shared/errors/AppError";
-import Order from "../infra/typeorm/entities/Order";
-import { IOrdersRepository } from "../domain/repositories/IOrdersRepository";
-import { ICustomersRepository } from "@modules/customers/domain/repositories/ICustomersReporitory";
+import type Order from "../infra/typeorm/entities/Order";
+import type { IOrdersRepository } from "../domain/repositories/IOrdersRepository";
+import type { ICustomersRepository } from "@modules/customers/domain/repositories/ICustomersReporitory";
 import { inject, injectable } from "tsyringe";
-import { IProductsRepository } from "@modules/products/domain/repositories/IProductsRepository";
-import { IUpdatedProduct } from "@modules/products/domain/models/IUpdatedProduct";
+import type { IProductsRepository } from "@modules/products/domain/repositories/IProductsRepository";
+import type { IUpdatedProduct } from "@modules/products/domain/models/IUpdatedProduct";
 
 interface IProduct{
     id: number;
@@ -21,7 +21,7 @@ interface IRequest{
 class CreateOrderService{
 
        constructor(
-         @inject('OrdersRepository')
+          @inject('OrdersRepository')
            private ordersRepository: IOrdersRepository,
          @inject('CustomersRepository')
            private customersRepository: ICustomersRepository,
@@ -82,12 +82,10 @@ class CreateOrderService{
                   quantity: existsProducts.filter(p => p.id === product.product_id)[0].quantity - product.quantity
                }))
 
-               console.log(updatedProductQuantity);
-
                await this.productsRepository.saveAndUpdate(updatedProductQuantity);
                return order;
             } catch (error) {
-                console.error(error);
+                // console.error(error);
                 throw new AppError('Internal Server Error');
             }
 

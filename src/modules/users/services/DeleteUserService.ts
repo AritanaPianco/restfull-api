@@ -1,6 +1,6 @@
 import AppError from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../domain/repositories/IUsersRepository";
+import type { IUserRepository } from "../domain/repositories/IUsersRepository";
 
 
 interface IRequest{

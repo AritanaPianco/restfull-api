@@ -1,5 +1,5 @@
-import { IOrder } from "./IOrder";
-import { IProduct } from "@modules/products/domain/models/IProcuct";
+import type { IOrder } from "./IOrder";
+import type { IProduct } from "@modules/products/domain/models/IProcuct";
 
 export interface ICreateOrdersProducts{
     id: number;

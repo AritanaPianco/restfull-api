@@ -1,8 +1,8 @@
 import {Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, OneToMany} from 'typeorm'
 import Customer from '@modules/customers/infra/typeorm/entities/Customer'
 import OrdersProducts from './OrdersProducts'
-import { ICustomer } from '@modules/customers/domain/models/ICustomer'
-import { IOrder } from '@modules/orders/domain/models/IOrder'
+import type { ICustomer } from '@modules/customers/domain/models/ICustomer'
+import type { IOrder } from '@modules/orders/domain/models/IOrder'
 
 @Entity('orders')
 class Order implements IOrder{

@@ -1,8 +1,8 @@
 import AppError from "@shared/errors/AppError";
 import { hash } from "bcryptjs";
-import { IUpdateUser } from "../domain/models/IUpdateUser";
-import { IUser } from "../domain/models/IUser";
-import { IUserRepository } from "../domain/repositories/IUsersRepository";
+import type { IUpdateUser } from "../domain/models/IUpdateUser";
+import type { IUser } from "../domain/models/IUser";
+import type { IUserRepository } from "../domain/repositories/IUsersRepository";
 import { inject, injectable } from "tsyringe";
 
 
