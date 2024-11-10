@@ -1,7 +1,7 @@
 import type { ICustomer } from "@modules/customers/domain/models/ICustomer";
 
 interface IProduct{
-    product_id: number;
+    product_id: string;
     price: number;
     quantity: number
 }

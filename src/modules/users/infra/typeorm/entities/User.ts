@@ -5,8 +5,8 @@ import { IUser } from '@modules/users/domain/models/IUser'
 @Entity('users')
 class User implements IUser{
 
-    @PrimaryGeneratedColumn()
-    id: number
+    @PrimaryGeneratedColumn('uuid')
+    id: string
 
     @Column()
     name: string

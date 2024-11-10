@@ -4,8 +4,8 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 @Entity('customers')
 class Customer implements ICustomer{
 
-   @PrimaryGeneratedColumn()
-   id: number
+   @PrimaryGeneratedColumn('uuid')
+   id: string
 
    @Column()
    name: string

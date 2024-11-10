@@ -6,7 +6,7 @@ import { IProduct } from '@modules/products/domain/models/IProcuct';
 import { IUpdatedProduct } from '@modules/products/domain/models/IUpdatedProduct';
 
 interface IFindProducts{
-    id: number;
+    id: string;
 }
 
 export class ProductRepository implements IProductsRepository{
@@ -45,7 +45,7 @@ export class ProductRepository implements IProductsRepository{
           return products;
     }
 
-    public async findOneProduct(id: number): Promise<IProduct | undefined>{
+    public async findOneProduct(id: string): Promise<IProduct | undefined>{
           const product = await this.ormRepository.findOne(id);
           return product;
     }

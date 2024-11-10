@@ -1,7 +1,7 @@
 import UserToken from '@modules/users/infra/typeorm/entities/user_token'
 import { IUsersTokenRepositorie } from '@modules/users/domain/repositories/IUserTokenRepository';
 import { IUserToken } from '../../models/IUserToken';
-
+import {v4 as uuidv4} from 'uuid';
 
 class FakerUserTokensRepository implements IUsersTokenRepositorie{
 
@@ -15,10 +15,10 @@ class FakerUserTokensRepository implements IUsersTokenRepositorie{
     }
 
 
-    public async generate(user_id: number): Promise<IUserToken>{
+    public async generate(user_id: string): Promise<IUserToken>{
           const userToken = new UserToken()
 
-          userToken.id = this.counter++
+          userToken.id = uuidv4()
           userToken.user_id = user_id
 
           this.usersToken.push(userToken)

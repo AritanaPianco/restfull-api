@@ -3,7 +3,7 @@ import { ICreateProduct } from "../models/ICreateProduct";
 import { IUpdatedProduct } from "../models/IUpdatedProduct";
 
 interface IFindProducts{
-    id: number;
+    id: string;
 }
 
 export interface IProductsRepository{
@@ -13,6 +13,6 @@ export interface IProductsRepository{
     save(product: IProduct): Promise<IProduct>;
     delete(product: IProduct): Promise<void>;
     findAllProducts(): Promise<IProduct[]>;
-    findOneProduct(id: number): Promise<IProduct | undefined>;
+    findOneProduct(id: string): Promise<IProduct | undefined>;
     saveAndUpdate(product: IUpdatedProduct[]): Promise<void>
 }

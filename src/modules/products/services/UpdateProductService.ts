@@ -5,7 +5,7 @@ import { IProductsRepository } from "../domain/repositories/IProductsRepository"
 import { IProduct } from "../domain/models/IProcuct";
 
 interface IRequest{
-    id: number,
+    id: string,
     name: string,
     price: number,
     quantity: number

@@ -19,7 +19,7 @@ describe('UpdateCustomer', () => {
     it('should not be able to update a non exist customer', async () => { 
          expect(
                updateCustomer.execute({
-                  customer_id: 3,
+                  customer_id: '3',
                   name: 'Jorge Luiz',
                   email: 'teste@gmail.com'
                })

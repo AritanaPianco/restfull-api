@@ -20,7 +20,7 @@ describe('UpdateProfileUser', () => {
     it('should not be able to update a non exist user', async () => {
          expect(
              updateProfile.execute({
-               user_id: 3,
+               user_id: '3',
                name: 'maria',
                email: 'maria@gmail.com'  
              })

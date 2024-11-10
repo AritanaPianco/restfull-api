@@ -1,4 +1,4 @@
-import {EntityRepository, Repository, getRepository} from 'typeorm'
+import {Repository, getRepository} from 'typeorm'
 import Customer from '../entities/Customer';
 import { ICustomersRepository } from '@modules/customers/domain/repositories/ICustomersReporitory';
 import { ICreateCustomer } from '@modules/customers/domain/models/ICreateCustomer';
@@ -48,7 +48,7 @@ class CustomersRepository implements ICustomersRepository{
     }
 
 
-    public async findById(id: number): Promise<Customer | undefined>{
+    public async findById(id: string): Promise<Customer | undefined>{
            const customer = await this.ormRepository.findOne({
                where: {
                   id

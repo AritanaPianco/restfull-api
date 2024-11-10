@@ -4,7 +4,7 @@ import type { IUserRepository } from "../domain/repositories/IUsersRepository";
 
 
 interface IRequest{
-    id: number
+    id: string
 }
 
 @injectable()

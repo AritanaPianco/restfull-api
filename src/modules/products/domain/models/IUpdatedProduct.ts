@@ -1,4 +1,4 @@
 export interface IUpdatedProduct{
-    id: number;
+    id: string;
     quantity: number
 }

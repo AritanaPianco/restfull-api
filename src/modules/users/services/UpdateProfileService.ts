@@ -5,7 +5,7 @@ import type { IUser } from "../domain/models/IUser";
 import type { IHashProvider } from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequest{
-    user_id: number;
+    user_id: string;
     name: string;
     email: string;
     password?: string;

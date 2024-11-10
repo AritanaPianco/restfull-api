@@ -2,11 +2,11 @@ import type { IOrder } from "./IOrder";
 import type { IProduct } from "@modules/products/domain/models/IProcuct";
 
 export interface ICreateOrdersProducts{
-    id: number;
+    id: string;
     order: IOrder;
     product: IProduct;
-    order_id: number;
-    product_id: number;
+    order_id: string;
+    product_id: string;
     price: number;
     quantity: number;
     created_at: Date;

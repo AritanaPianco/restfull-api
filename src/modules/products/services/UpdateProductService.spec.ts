@@ -35,7 +35,7 @@ describe('updateProduct', () => {
            
            expect( 
                updateProduct.execute({
-                id: 66,
+                id: '66',
                 name: 'controle',
                 price: 50,
                 quantity: 15

@@ -4,7 +4,7 @@ import { ICustomersRepository } from '../domain/repositories/ICustomersReporitor
 import { inject, injectable } from 'tsyringe';
 
 interface IRequest{
-    customer_id: number;
+    customer_id: string;
     name: string;
     email: string
 }

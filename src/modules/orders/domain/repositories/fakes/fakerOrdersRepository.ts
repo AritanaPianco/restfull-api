@@ -2,9 +2,10 @@ import type Order from '@modules/orders/infra/typeorm/entities/Order';
 import type { IOrder } from '../../models/IOrder';
 import type { IOrdersRepository } from '@modules/orders/domain/repositories/IOrdersRepository';
 import type { ICustomer } from '@modules/customers/domain/models/ICustomer';
+import {v4 as uuidv4} from 'uuid'
 
 interface IProduct{
-    product_id: number;
+    product_id: string;
     price: number;
     quantity: number
 }
@@ -21,7 +22,7 @@ export class FakerOrdersRepository implements IOrdersRepository{
     private products: IProduct[] = []
     private count = 1
 
-    public async findById(id: number): Promise<Order | undefined>{
+    public async findById(id: string): Promise<Order | undefined>{
           const order = this.orders.find((order) => order.id === id)
 
            return order;
@@ -30,7 +31,7 @@ export class FakerOrdersRepository implements IOrdersRepository{
     public async createOrder({customer, products}: ICreateOrder): Promise<Order>{
     
         const order: IOrder = {
-            id: this.count++,
+            id: uuidv4() as string,
             customer,
             order_products: [],
             created_at: new Date(),
@@ -38,7 +39,7 @@ export class FakerOrdersRepository implements IOrdersRepository{
         };
 
         const orderProducts = products.map((product) => ({
-            id: this.count++,
+            id: uuidv4(),
             order,                  
             product: {
                 ...product,

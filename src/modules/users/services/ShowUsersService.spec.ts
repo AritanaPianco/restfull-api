@@ -16,7 +16,7 @@ describe('ShowUser', () => {
     it('should not be able to show a non exist user', async () => {
          expect(
              showUser.execute({
-               id: 3
+               id: '3'
              })
          ).rejects.toBeInstanceOf(AppError)
           

@@ -31,10 +31,10 @@ describe('createOrder', () => {
 
        expect(
           createOrder.execute({
-               customer_id: 3,
+               customer_id: '3',
                products: [
                    {
-                      id: 7,
+                      id: '7',
                       quantity: 2
                    }
                ]
@@ -53,7 +53,7 @@ describe('createOrder', () => {
                customer_id: customer.id,
                products: [
                    {
-                      id: 7,
+                      id: '7',
                       quantity: 2
                    }
                ]

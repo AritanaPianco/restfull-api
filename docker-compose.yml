@@ -14,22 +14,32 @@ services:
        - redis
 
   db:
-    image: mysql:8.0
+    build: .docker/postgres
     container_name: apivendas-db
     restart: always
     tty: true
     ports: 
-      - "3306:3306"
+      - "5432:5432"
     volumes:
-       - .docker/dbdata:/var/lib/mysql
+       - .docker/dbdata:/var/lib/postgresql/data
     environment:
-       - MYSQL_ROOT_PASSWORD=ari2002
-       - MYSQL_DATABASE=apivendas
+       - POSTGRES_PASSWORD=postgres
+       - POSTGRES_DB=apivendas
 
   redis:
     image: 'bitnami/redis:latest'
     container_name: apivendas-redis     
     environment:
        - ALLOW_EMPTY_PASSWORD=yes   
-    ports:
-      - "6379:6379"             
+
+  pgadmin:
+     image: dpage/pgadmin4
+     container_name: apivendas-pgadmin
+     tty: true
+     environment:
+        - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+        - PGADMIN_DEFAULT_PASSWORD=admin
+     ports:
+        - '8000:80'
+     depends_on:
+        - db

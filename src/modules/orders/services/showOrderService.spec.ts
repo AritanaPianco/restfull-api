@@ -26,7 +26,7 @@ describe('showOrder', () => {
      
        expect(
           showOrder.execute({
-              id: 20
+              id: '20'
           })
        ).rejects.toBeInstanceOf(AppError)
     })

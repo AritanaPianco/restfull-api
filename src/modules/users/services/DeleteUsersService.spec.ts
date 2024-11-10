@@ -16,7 +16,7 @@ describe('DeleteUser', () => {
     it('should not be able to a non exist user', async () => {
         expect(
             deleteUser.execute({
-            id: 5
+            id: '5'
         })
         ).rejects.toBeInstanceOf(AppError)
           

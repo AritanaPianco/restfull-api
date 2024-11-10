@@ -7,7 +7,7 @@ import type { IUserRepository } from "../domain/repositories/IUsersRepository";
 import type { IUser } from "../domain/models/IUser";
 
 interface IRequest{
-    user_id: number,
+    user_id: string,
     avatarFilename: string
 }
 

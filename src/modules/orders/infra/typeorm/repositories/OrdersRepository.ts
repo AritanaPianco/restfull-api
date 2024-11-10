@@ -12,7 +12,7 @@ export class OrdersRepository implements IOrdersRepository{
         this.ormRepository = getRepository(Order)
     }
 
-    public async findById(id: number): Promise<Order | undefined>{
+    public async findById(id: string): Promise<Order | undefined>{
           const order = this.ormRepository.findOne(id,{
               relations: ['order_products', 'customer']
           });

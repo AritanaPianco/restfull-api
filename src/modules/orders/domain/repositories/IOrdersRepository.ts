@@ -3,7 +3,7 @@ import { ICreateOrder } from "../models/ICreateOrder";
 
 
 export interface IOrdersRepository{
-    findById(id: number): Promise<IOrder | undefined>;
+    findById(id: string): Promise<IOrder | undefined>;
     createOrder({customer, products}: ICreateOrder): Promise<IOrder>
 
 }

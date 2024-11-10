@@ -1,8 +1,9 @@
-// import {v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4 } from 'uuid';
 import User from '../../../infra/typeorm/entities/User'
 import { IUserRepository } from '@modules/users/domain/repositories/IUsersRepository';
 import { IUser } from '@modules/users/domain/models/IUser';
 import { ICreateUser } from '@modules/users/domain/models/ICreateUser';
+
 
 class FakerUsersRepository implements IUserRepository{
 
@@ -12,7 +13,7 @@ class FakerUsersRepository implements IUserRepository{
     public async create({name, email, password}: ICreateUser): Promise<IUser>{
         const user = new User();
 
-        user.id = this.counter++;
+        user.id = uuidv4();
         user.name = name;
         user.email = email;
         user.password = password;
@@ -25,7 +26,7 @@ class FakerUsersRepository implements IUserRepository{
          this.users[findIndex] = user;
     }
 
-    public async findOneUser(id: number): Promise<IUser | undefined>{
+    public async findOneUser(id: string): Promise<IUser | undefined>{
           const user = this.users.find(user => user.id == id);
           return user;
     }
@@ -45,7 +46,7 @@ class FakerUsersRepository implements IUserRepository{
     }
 
 
-    public async findById(id: number): Promise<IUser | undefined>{
+    public async findById(id: string): Promise<IUser | undefined>{
            const user = this.users.find(user => user.id === id);
            return user;
     }

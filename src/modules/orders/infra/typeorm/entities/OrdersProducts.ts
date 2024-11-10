@@ -14,8 +14,8 @@ import type { IProduct } from '@modules/products/domain/models/IProcuct'
 @Entity('orders_products')
 class OrdersProducts implements IOrdersProducts{
 
-    @PrimaryGeneratedColumn()
-    id: number
+    @PrimaryGeneratedColumn('uuid')
+    id: string
 
     @ManyToOne(() => Order, order => order.order_products)
     @JoinColumn({name: 'order_id'})
@@ -26,10 +26,10 @@ class OrdersProducts implements IOrdersProducts{
     product: IProduct
 
     @Column()
-    order_id: number
+    order_id: string
 
     @Column()
-    product_id: number
+    product_id: string
 
     @Column('decimal')
     price: number;

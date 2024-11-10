@@ -26,7 +26,7 @@ describe('deleteProduct', () => {
     it('should trown an erro in case non existed product ', async () => {
               
          expect(
-             deleteProduct.execute({id: 66})
+             deleteProduct.execute({id: '66'})
             ).rejects.toBeInstanceOf(AppError)
          
     })

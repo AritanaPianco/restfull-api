@@ -9,11 +9,11 @@ export class CreateOrdersProducts1727551918474 implements MigrationInterface {
                    name: "orders_products",
                    columns: [
                          {
-                             name: 'id',
-                             type: 'int',
-                             isPrimary: true,
-                             isGenerated: true,
-                             generationStrategy: 'increment'
+                          name: 'id',
+                          type: 'uuid',
+                          isPrimary: true,
+                          generationStrategy: 'uuid',
+                          default: 'uuid_generate_v4()'
                          },
                          {
                            name: 'price',
@@ -27,14 +27,14 @@ export class CreateOrdersProducts1727551918474 implements MigrationInterface {
                          },
                          {
                            name: 'created_at',
-                           type: 'timestamp',
-                           default: 'CURRENT_TIMESTAMP'
+                           type: 'timestamp with time zone',
+                           default: 'now()'
                          },
                          {
                            name: 'updated_at',
-                           type: 'timestamp',
-                           default: 'CURRENT_TIMESTAMP',
-                           onUpdate: 'CURRENT_TIMESTAMP'
+                           type: 'timestamp with time zone',
+                           default: 'now()',
+                           onUpdate: 'now()'
                          }
                    ]
                }

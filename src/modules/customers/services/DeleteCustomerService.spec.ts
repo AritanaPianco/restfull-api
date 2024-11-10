@@ -19,7 +19,7 @@ describe('DeleteCustomer', () => {
     it('should be not able to delete a non exist customer', async () => { 
          expect(
                deleteCustomer.execute({
-               customer_id: 3
+               customer_id: '3'
            })
          ).rejects.toBeInstanceOf(AppError);
 

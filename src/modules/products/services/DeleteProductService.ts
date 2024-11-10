@@ -4,7 +4,7 @@ import { inject, injectable } from "tsyringe";
 import { IProductsRepository } from "../domain/repositories/IProductsRepository";
 
 interface IRequest{
-    id: number
+    id: string
 }
 
 @injectable()

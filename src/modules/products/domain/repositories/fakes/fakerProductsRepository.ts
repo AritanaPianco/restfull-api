@@ -3,9 +3,10 @@ import type { IProductsRepository } from '@modules/products/domain/repositories/
 import type { ICreateProduct } from '@modules/products/domain/models/ICreateProduct';
 import type { IProduct } from '@modules/products/domain/models/IProcuct';
 import type { IUpdatedProduct } from '@modules/products/domain/models/IUpdatedProduct';
+import {v4 as uuidv4} from  'uuid'
 
 interface IFindProducts{
-    id: number;
+    id: string;
 }
 
 export class FakerProductRepository implements IProductsRepository{
@@ -16,7 +17,7 @@ export class FakerProductRepository implements IProductsRepository{
     public async create({ name, price, quantity}: ICreateProduct): Promise<IProduct>{
            const product = new Product();
           
-           product.id = this.counter++
+           product.id = uuidv4()
            product.name = name;
            product.price = price;
            product.quantity = quantity;
@@ -48,7 +49,7 @@ export class FakerProductRepository implements IProductsRepository{
           return this.products;
     }
 
-    public async findOneProduct(id: number): Promise<IProduct | undefined>{
+    public async findOneProduct(id: string): Promise<IProduct | undefined>{
           const product = this.products.find(product => product.id === id)
           return product;
     }

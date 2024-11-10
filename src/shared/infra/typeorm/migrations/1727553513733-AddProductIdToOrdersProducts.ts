@@ -7,7 +7,7 @@ export class AddProductIdToOrdersProducts1727553513733 implements MigrationInter
             'orders_products',
             new TableColumn({
                 name: 'product_id',
-                type: 'int',
+                type: 'uuid',
                 isNullable: true
 
             })

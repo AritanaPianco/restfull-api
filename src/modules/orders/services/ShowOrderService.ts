@@ -5,7 +5,7 @@ import { inject, injectable } from "tsyringe";
 import type { IOrder } from "../domain/models/IOrder";
 
 interface IRequest{
-    id: number;
+    id: string;
 }
 
 @injectable()

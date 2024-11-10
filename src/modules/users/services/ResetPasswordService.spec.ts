@@ -44,7 +44,7 @@ describe('ResetPassword', () => {
                 })
 
          const userToken = await fakerUsersTokenRepository.generate(user.id)       
-         const userToken2 = await fakerUsersTokenRepository.generate(4)       
+         const userToken2 = await fakerUsersTokenRepository.generate('4')       
 
           expect(
               resetPassword.execute({

@@ -10,29 +10,31 @@ export class CreateUserTokens1724245742887 implements MigrationInterface {
                 columns: [
                     {
                         name: 'id',
-                        type: 'int',
+                        type: 'uuid',
                         isPrimary: true,
-                        isGenerated: true,
-                        generationStrategy: 'increment'
+                        generationStrategy: 'uuid',
+                        default: 'uuid_generate_v4()'
                     },
                     {
                         name: 'token',
-                        type: 'varchar',
+                        type: 'uuid',
+                        generationStrategy: 'uuid',
+                        default: 'uuid_generate_v4()'
                     },
                     {
                         name: 'user_id',
-                        type: 'int'
+                        type: 'uuid'
                     },
                     {
                         name: 'created_at',
-                        type: 'timestamp',
-                        default: 'CURRENT_TIMESTAMP'
+                        type: 'timestamp with time zone',
+                        default: 'now()'
                     },
                     {
                         name: 'updated_at',
-                        type: 'timestamp',
-                        default: 'CURRENT_TIMESTAMP',
-                        onUpdate: 'CURRENT_TIMESTAMP'
+                        type: 'timestamp with time zone',
+                        default: 'now()',
+                        onUpdate: 'now()'
                     }
                 ],
                 foreignKeys: [

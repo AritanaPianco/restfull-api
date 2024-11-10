@@ -43,7 +43,7 @@ class FakeCustomersRepository implements ICustomersRepository {
     }
 
 
-    public async findById(id: number): Promise<Customer | undefined>{
+    public async findById(id: string): Promise<Customer | undefined>{
         const customer = this.customers.find(customer => customer.id === id);
         return customer;
     }

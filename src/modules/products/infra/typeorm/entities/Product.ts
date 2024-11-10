@@ -5,8 +5,8 @@ import { IOrdersProducts } from '@modules/orders/domain/models/IOrdersProducts';
 @Entity('products')
 class Product {
 
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @OneToMany(() => OrdersProducts, order_products => order_products.product)
     order_products: IOrdersProducts[]

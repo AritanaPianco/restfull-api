@@ -16,7 +16,7 @@ describe('UpdateUser', () => {
     it('should not be able to update a non exist user', async () => {
          expect(
             updateUser.execute({
-                 id: 2,
+                 id: '2',
                  name: 'maria',
                  email: 'maria@gmail.com',
                  password: '234'

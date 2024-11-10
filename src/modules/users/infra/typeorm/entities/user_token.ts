@@ -6,13 +6,14 @@ import { IUserToken } from '@modules/users/domain/models/IUserToken'
 class UserToken implements IUserToken{
 
     @PrimaryGeneratedColumn()
-    id: number
+    id: string
 
     @Column()
+    @Generated('uuid')
     token: string
 
     @Column()
-    user_id: number
+    user_id: string
 
     @CreateDateColumn()
     created_at: Date

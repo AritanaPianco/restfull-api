@@ -7,12 +7,12 @@ import type { IProductsRepository } from "@modules/products/domain/repositories/
 import type { IUpdatedProduct } from "@modules/products/domain/models/IUpdatedProduct";
 
 interface IProduct{
-    id: number;
+    id: string;
     quantity: number
 }
 
 interface IRequest{
-    customer_id: number;
+    customer_id: string;
     products: IProduct[];
 }
 

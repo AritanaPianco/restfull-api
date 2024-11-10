@@ -7,8 +7,8 @@ import type { IOrder } from '@modules/orders/domain/models/IOrder'
 @Entity('orders')
 class Order implements IOrder{
 
-    @PrimaryGeneratedColumn()
-    id: number
+    @PrimaryGeneratedColumn('uuid')
+    id: string
 
     @ManyToOne(() => Customer) // many orders to one customer
     @JoinColumn({name: 'customer_id'})

@@ -16,7 +16,7 @@ describe('showProduct', () => {
               
            expect( 
                showProduct.execute({
-                  id: 66
+                  id: '66'
                })
            ).rejects.toBeInstanceOf(AppError)
          
