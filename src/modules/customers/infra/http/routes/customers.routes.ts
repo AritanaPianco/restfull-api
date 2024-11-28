@@ -7,7 +7,7 @@ const customersController = new CustomersController();
 import {celebrate, Joi, Segments} from 'celebrate';
 
 
-customersRouter.use(isAuthenticated);
+// customersRouter.use(isAuthenticated);
 
 customersRouter.get('/',customersController.index)
 

@@ -4,7 +4,6 @@ import ShowCustomerService from '../../../services/ShowCustomerService';
 import ListCustomersService from '../../../services/ListCustomerService';
 import DeleteCustomerService from '../../../services/DeleteCustomerService';
 import UpdateCustomerService from '../../../services/UpdateCustomerService';
-import CustomersRepository from '../../typeorm/repositories/CustomersRepository';
 import { container } from 'tsyringe';
 
 
@@ -12,8 +11,11 @@ import { container } from 'tsyringe';
 export default class CustomersController{
 
       public async index(request: Request, response: Response): Promise<Response> {
+               const page = request.query.page ? Number(request.query.page) : 1;
+               const limit = request.query.limit ? Number(request.query.limit) : 10; 
+
                const listCustomers = container.resolve(ListCustomersService);
-               const customers = await listCustomers.execute();
+               const customers = await listCustomers.execute({ page, limit });
                return response.json(customers);
       }
 
